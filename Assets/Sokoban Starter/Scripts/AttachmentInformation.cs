@@ -32,8 +32,8 @@ public class AttachmentInformation : MonoBehaviour
         return true;
     }
     public void CheckAttachments(){
-        int x=(int)_CurrentPosition.x;
-        int y=(int)_CurrentPosition.y;
+        int x=(int)_CurrentPosition.x-1;
+        int y=(int)_CurrentPosition.y-1;
 
         if (x>0 && Grid[x-1,y]!=null){
             int a=x-1;
