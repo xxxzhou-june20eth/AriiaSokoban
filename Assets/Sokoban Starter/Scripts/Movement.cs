@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public UnityEngine.Vector2 _PreviousPosition;
     public GameObject[,] Grid;
     public GameObject GridObject;
-    public Boolean Movable;
+    public Boolean Moved;
     public Boolean NextPositionMovable(string Direction, UnityEngine.Vector2 _CurrentPosition){ //check if new position exceeds the grid
         switch (Direction){ //Set the new grid position based on the movement directed
             case "L":
@@ -177,7 +177,7 @@ public class Movement : MonoBehaviour
     public void Move(string Direction){ //move the block
         Debug.Log(this.name+"get input to move to "+Direction);
         Boolean CanMove=MoveTo(Direction,_CurrentPosition);
-        if (CanMove){ //if movable then move the block
+        if (CanMove && !Moved){ //if movable then move the block
             
             //update the coordinate
             float x = GridMaker.reference.TopLeft.x + GridMaker.reference.cellWidth * (_NextPosition.x - 0.5f); 
@@ -193,6 +193,7 @@ public class Movement : MonoBehaviour
             _PreviousPosition=_CurrentPosition;
             _CurrentPosition=_NextPosition; //update position
             this.GetComponent<AttachmentInformation>()._CurrentPosition=_CurrentPosition; //update the attachment grid pos
+            Moved=true;
         }
         
         if (this.GetComponent<AttachmentInformation>().Attached.Count>0){ //if the block have attachment then move attachment first
@@ -209,10 +210,13 @@ public class Movement : MonoBehaviour
     {
         Tag=this.gameObject.tag;
         _CurrentPosition=new UnityEngine.Vector2(this.transform.position.x+5.5f,-(this.transform.position.y-3));
+        Moved=true;
+
         //initialize the grid
         GridObject=GameObject.Find("Grid");
         Grid=GridObject.GetComponent<GridManager>().Grid;
         GridObject.GetComponent<GridManager>().Grid[(int)_CurrentPosition.x-1,(int)_CurrentPosition.y-1]=this.gameObject;
+        GridObject.GetComponent<GridManager>().BlockList.Add(this.gameObject);
 
         //initialize the attachments
         this.GetComponent<AttachmentInformation>().Attached.Clear();

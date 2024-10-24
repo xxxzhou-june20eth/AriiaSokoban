@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -108,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
                     GameObject _Occupying = Grid[(int)_NextPosition.x-1,(int)_NextPosition.y-1]; //grab info of occupant
                     Boolean OccupantMoved=_Occupying.GetComponent<Movement>().MoveTo(Direction,_Occupying.GetComponent<Movement>()._CurrentPosition); //check if occupant can move
                     if (OccupantMoved){ //if occupant can move
+                        _Occupying.GetComponent<Movement>().Moved=false;
                         _Occupying.GetComponent<Movement>().Move(Direction);
                         return true; //move this
                     }
@@ -173,11 +177,21 @@ public class PlayerMovement : MonoBehaviour
             }
     }
 
+    void InitializeMovement(){
+        foreach (GameObject obj in GridObject.GetComponent<GridManager>().BlockList){
+            if (obj.gameObject.tag!="Wall" && obj.gameObject.tag!="Player"){
+                obj.GetComponent<Movement>().Moved=false;
+            }
+        }
+    }
+
     public void Move(string Direction){ //move the block
         Debug.Log(this.name+"get input to move to "+Direction);
         Boolean CanMove=MoveTo(Direction,_CurrentPosition);
         if (CanMove){ //if movable then move the block
-            
+            //Initialize the Movement of each block
+            InitializeMovement();
+
             //update the coordinate
             float x = GridMaker.reference.TopLeft.x + GridMaker.reference.cellWidth * (_NextPosition.x - 0.5f); 
             float y = GridMaker.reference.TopLeft.y - GridMaker.reference.cellWidth * (_NextPosition.y - 0.5f);
@@ -213,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
         GridObject=GameObject.Find("Grid");
         Grid=GridObject.GetComponent<GridManager>().Grid;
         GridObject.GetComponent<GridManager>().Grid[(int)_CurrentPosition.x-1,(int)_CurrentPosition.y-1]=this.gameObject;
+        GridObject.GetComponent<GridManager>().BlockList.Add(this.gameObject);
 
         //initialize the attachments
         this.GetComponent<AttachmentInformation>().Attached.Clear();
