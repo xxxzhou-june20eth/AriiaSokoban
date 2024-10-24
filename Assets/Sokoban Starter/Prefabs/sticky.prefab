@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2883449981151806095}
   - component: {fileID: 2883449981151806094}
   - component: {fileID: 2883449981151806097}
+  - component: {fileID: 7477006848792744225}
+  - component: {fileID: 5826777860263559456}
   m_Layer: 0
   m_Name: sticky
   m_TagString: Sticky
@@ -120,3 +122,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 3, y: 0}
+--- !u!114 &7477006848792744225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883449981151806093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea80b4c0196f4a99a25c2352d63a388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: 
+  _CurrentPosition: {x: 0, y: 0}
+  _NextPosition: {x: 0, y: 0}
+  _PreviousPosition: {x: 0, y: 0}
+  GridObject: {fileID: 0}
+  Movable: 1
+--- !u!114 &5826777860263559456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883449981151806093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57ee24b2b0c740a5a4b21b2a6a71012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Attached: []
+  _CurrentPosition: {x: 0, y: 0}
+  GridObject: {fileID: 0}

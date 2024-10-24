@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5564537325162552423}
   - component: {fileID: 5564537325162552408}
   - component: {fileID: 5564537325162552421}
+  - component: {fileID: 8285606708097091988}
   m_Layer: 0
   m_Name: wall
   m_TagString: Wall
@@ -120,3 +121,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 2, y: 0}
+--- !u!114 &8285606708097091988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564537325162552409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea80b4c0196f4a99a25c2352d63a388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tag: 
+  _CurrentPosition: {x: 0, y: 0}
+  _NextPosition: {x: 0, y: 0}
+  _PreviousPosition: {x: 0, y: 0}
+  GridObject: {fileID: 0}
+  Movable: 0
