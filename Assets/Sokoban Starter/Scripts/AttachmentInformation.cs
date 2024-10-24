@@ -35,7 +35,7 @@ public class AttachmentInformation : MonoBehaviour
         int x=(int)_CurrentPosition.x-1;
         int y=(int)_CurrentPosition.y-1;
 
-        if (x>0 && Grid[x-1,y]!=null){
+        if (x>=1 && Grid[x-1,y]!=null){
             int a=x-1;
             int b=y;
             if (CheckAttachmentMovable(a,b)){

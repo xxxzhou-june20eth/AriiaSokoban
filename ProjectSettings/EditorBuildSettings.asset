@@ -12,4 +12,5 @@ EditorBuildSettings:
     path: Assets/Sokoban Starter/Sokoban.unity
     guid: e8eb16d62200eca4b9790429ebff0372
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 00bfaf20b6bb94409afdbe7e6042c28b, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 78fee71606b6d4f848234f394d54e1ac, type: 2}
