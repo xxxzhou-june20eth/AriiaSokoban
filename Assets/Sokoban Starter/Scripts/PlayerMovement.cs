@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -231,7 +228,6 @@ public class PlayerMovement : MonoBehaviour
 
         //initialize the attachments
         this.GetComponent<AttachmentInformation>().Attached.Clear();
-        this.GetComponent<AttachmentInformation>().CheckAttachments();
     }
 
     // Update is called once per frame
